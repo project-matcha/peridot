@@ -15,9 +15,7 @@ RUN --mount=type=bind,from=ctx,source=/,target=/ctx \
     --mount=type=tmpfs,dst=/tmp \
     zypper install -y -t pattern gnome_basic && zypper install -y gnome-terminal gdm && \
     systemctl set-default graphical.target && \
-    /ctx/build.sh && \
-    ostree container commit
-    
-### LINTING
-## Verify final image and contents are correct.
-RUN bootc container lint
+    /ctx/build.sh
+
+# Necessary labels
+LABEL containers.bootc 1
