@@ -15,6 +15,7 @@ RUN --mount=type=bind,from=ctx,source=/,target=/ctx \
     --mount=type=tmpfs,dst=/tmp \
     zypper install -y -t pattern gnome_basic && zypper install -y gnome-terminal gdm && \
     systemctl set-default graphical.target && \
+    dracut --regenerate-all --force && \
     /ctx/build.sh
 
 # Necessary labels
